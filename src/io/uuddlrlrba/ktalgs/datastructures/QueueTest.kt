@@ -1,4 +1,4 @@
-package im.uuddlrlrba.ktalgs.datastructures
+package io.uuddlrlrba.ktalgs.datastructures
 
 import org.junit.Assert
 import org.junit.Test

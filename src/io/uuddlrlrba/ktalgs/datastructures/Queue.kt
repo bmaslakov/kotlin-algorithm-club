@@ -1,9 +1,10 @@
-package im.uuddlrlrba.ktalgs.datastructures
+package io.uuddlrlrba.ktalgs.datastructures
 
 import java.util.*
 
-class Stack<T> {
+class Queue<T> {
     private var head: Node<T>? = null
+    private var tail: Node<T>? = null
     public var size: Int = 0
         private set
 
@@ -11,10 +12,16 @@ class Stack<T> {
         var next: Node<T>? = null
     }
 
-    public fun push(item: T) {
+    public fun add(item: T) {
         val new = Node(item)
-        new.next = head
-        head = new
+        val tail = this.tail
+        if (tail == null) {
+            head = new
+            this.tail = new
+        } else {
+            tail.next = new
+            this.tail = new
+        }
         size++
     }
 

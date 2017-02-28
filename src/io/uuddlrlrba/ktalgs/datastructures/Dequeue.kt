@@ -1,8 +1,8 @@
-package im.uuddlrlrba.ktalgs.datastructures
+package io.uuddlrlrba.ktalgs.datastructures
 
 import java.util.*
 
-class Queue<T> {
+class Dequeue<T> {
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
     public var size: Int = 0
@@ -25,15 +25,39 @@ class Queue<T> {
         size++
     }
 
-    public fun peek(): T {
+    public fun push(item: T) {
+        val new = Node(item)
+        new.next = head
+        head = new
+        size++
+    }
+
+    public fun peekFirst(): T {
         if (size == 0) throw NoSuchElementException()
         return head!!.value
     }
 
-    public fun poll(): T {
+    public fun peekLast(): T {
+        if (size == 0) throw NoSuchElementException()
+        return tail!!.value
+    }
+
+    public fun pollFirst(): T {
         if (size == 0) throw NoSuchElementException()
         val old = head!!
         head = old.next
         return old.value
+    }
+
+    public fun pollLast(): T {
+        if (size == 0) throw NoSuchElementException()
+        var node = head!!
+        while (node.next != null && node.next != tail) {
+            node = node.next!!
+        }
+        val ret = node.next!!
+        node.next = null
+        tail = node
+        return ret.value
     }
 }
