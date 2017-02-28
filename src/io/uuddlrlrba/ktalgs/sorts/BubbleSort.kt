@@ -1,7 +1,7 @@
 package io.uuddlrlrba.ktalgs.sorts
 
-class BubbleSort {
-    public fun<T : Comparable<T>> perform(arr: Array<T>) {
+class BubbleSort : AbstractSortStrategy() {
+    public override fun<T : Comparable<T>> perform(arr: Array<T>) {
         var exchanged: Boolean
         do {
             exchanged = false
