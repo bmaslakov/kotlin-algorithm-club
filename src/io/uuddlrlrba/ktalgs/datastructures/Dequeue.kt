@@ -2,7 +2,8 @@ package io.uuddlrlrba.ktalgs.datastructures
 
 import java.util.*
 
-class Dequeue<T> {
+@Suppress("RedundantVisibilityModifier")
+public class Dequeue<T> : Iterable<T> {
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
     public var size: Int = 0
@@ -59,5 +60,26 @@ class Dequeue<T> {
         node.next = null
         tail = node
         return ret.value
+    }
+
+    public fun isEmpty(): Boolean {
+        return size == 0
+    }
+
+    public override fun iterator(): Iterator<T> {
+        return object : Iterator<T> {
+            var node = head
+
+            override fun hasNext(): Boolean {
+                return node != null
+            }
+
+            override fun next(): T {
+                if (!hasNext()) throw NoSuchElementException()
+                val current = node!!
+                node = current.next
+                return current.value
+            }
+        }
     }
 }

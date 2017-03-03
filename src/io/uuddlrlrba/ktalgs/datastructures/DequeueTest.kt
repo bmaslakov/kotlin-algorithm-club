@@ -6,19 +6,20 @@ import java.util.*
 
 class DequeueTest {
     @Test
-    public fun emptyTest() {
+    fun emptyTest() {
         val dequeue = Dequeue<Int>()
         Assert.assertEquals(0, dequeue.size)
+        Assert.assertTrue(dequeue.isEmpty())
     }
 
     @Test(expected= NoSuchElementException::class)
-    public fun exceptionTest() {
+    fun exceptionTest() {
         val dequeue = Dequeue<Int>()
         dequeue.peekFirst()
     }
 
     @Test
-    public fun naiveTest() {
+    fun naiveTest() {
         val dequeue = Dequeue<Int>()
         for (i in 0..10) {
             dequeue.add(i)
@@ -30,6 +31,19 @@ class DequeueTest {
         for (i in 10..6) {
             Assert.assertEquals(i, dequeue.peekLast())
             Assert.assertEquals(i, dequeue.pollLast())
+        }
+    }
+
+    @Test
+    fun naiveIteratorTest() {
+        val dequeue = Dequeue<Int>()
+        for (i in 0..10) {
+            dequeue.add(i)
+        }
+
+        var k = 0
+        for (i in dequeue) {
+            Assert.assertEquals(i, k++)
         }
     }
 }

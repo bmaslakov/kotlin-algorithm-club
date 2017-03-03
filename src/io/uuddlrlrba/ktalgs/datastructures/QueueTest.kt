@@ -6,19 +6,20 @@ import java.util.*
 
 class QueueTest {
     @Test
-    public fun emptyTest() {
+    fun emptyTest() {
         val queue = Queue<Int>()
         Assert.assertEquals(0, queue.size)
+        Assert.assertTrue(queue.isEmpty())
     }
 
     @Test(expected= NoSuchElementException::class)
-    public fun exceptionTest() {
+    fun exceptionTest() {
         val queue = Queue<Int>()
         queue.peek()
     }
 
     @Test
-    public fun naiveTest() {
+    fun naiveTest() {
         val queue = Queue<Int>()
         for (i in 0..10) {
             queue.add(i)
@@ -26,6 +27,19 @@ class QueueTest {
         for (i in 0..10) {
             Assert.assertEquals(i, queue.peek())
             Assert.assertEquals(i, queue.poll())
+        }
+    }
+
+    @Test
+    fun naiveIteratorTest() {
+        val queue = Queue<Int>()
+        for (i in 0..10) {
+            queue.add(i)
+        }
+
+        var k = 0
+        for (i in queue) {
+            Assert.assertEquals(i, k++)
         }
     }
 }
