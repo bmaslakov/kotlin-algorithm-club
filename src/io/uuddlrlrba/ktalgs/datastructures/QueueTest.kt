@@ -42,4 +42,20 @@ class QueueTest {
             Assert.assertEquals(i, k++)
         }
     }
+
+    @Test
+    fun naiveContainsTest() {
+        val queue = Queue<Int>()
+        for (i in 0..10) {
+            queue.add(i)
+        }
+
+        for (i in 0..10) {
+            Assert.assertTrue(queue.contains(i))
+        }
+
+        Assert.assertFalse(queue.contains(100))
+        Assert.assertFalse(queue.contains(101))
+        Assert.assertFalse(queue.contains(103))
+    }
 }

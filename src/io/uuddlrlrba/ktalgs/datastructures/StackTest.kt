@@ -42,4 +42,20 @@ class StackTest {
             Assert.assertEquals(i, k--)
         }
     }
+
+    @Test
+    fun naiveContainsTest() {
+        val stack = Stack<Int>()
+        for (i in 0..10) {
+            stack.push(i)
+        }
+
+        for (i in 0..10) {
+            Assert.assertTrue(stack.contains(i))
+        }
+
+        Assert.assertFalse(stack.contains(100))
+        Assert.assertFalse(stack.contains(101))
+        Assert.assertFalse(stack.contains(103))
+    }
 }

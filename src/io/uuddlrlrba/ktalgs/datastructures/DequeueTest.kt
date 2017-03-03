@@ -46,4 +46,20 @@ class DequeueTest {
             Assert.assertEquals(i, k++)
         }
     }
+
+    @Test
+    fun naiveContainsTest() {
+        val dequeue = Dequeue<Int>()
+        for (i in 0..10) {
+            dequeue.add(i)
+        }
+
+        for (i in 0..10) {
+            Assert.assertTrue(dequeue.contains(i))
+        }
+
+        Assert.assertFalse(dequeue.contains(100))
+        Assert.assertFalse(dequeue.contains(101))
+        Assert.assertFalse(dequeue.contains(103))
+    }
 }

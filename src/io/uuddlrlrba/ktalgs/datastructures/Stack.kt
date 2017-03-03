@@ -3,9 +3,9 @@ package io.uuddlrlrba.ktalgs.datastructures
 import java.util.*
 
 @Suppress("RedundantVisibilityModifier")
-public class Stack<T> : Iterable<T> {
+public class Stack<T> : Collection<T> {
     private var head: Node<T>? = null
-    var size: Int = 0
+    public override var size: Int = 0
         private set
 
     private class Node<T>(var value: T) {
@@ -31,8 +31,22 @@ public class Stack<T> : Iterable<T> {
         return old.value
     }
 
-    public fun isEmpty(): Boolean {
+    public override fun isEmpty(): Boolean {
         return size == 0
+    }
+
+    public override fun contains(element: T): Boolean {
+        for (obj in this) {
+            if (obj == element) return true
+        }
+        return false
+    }
+
+    public override fun containsAll(elements: Collection<T>): Boolean {
+        for (element in elements) {
+            if (!contains(element)) return false
+        }
+        return true
     }
 
     public override fun iterator(): Iterator<T> {
