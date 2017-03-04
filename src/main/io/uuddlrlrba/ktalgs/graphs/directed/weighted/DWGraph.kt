@@ -2,11 +2,11 @@ package io.uuddlrlrba.ktalgs.graphs.directed.weighted
 
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 
-class DWGraph(private val V: Int) {
+class DWGraph(public val V: Int) {
     public var E: Int = 0
         private set
-    public val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
-    private val indegree: Array<Int> = Array(V) { return@Array 0 }
+    private val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
+    private val indegree: IntArray = IntArray(V)
 
     public class Edge(public val from: Int, public val to: Int, public val weight: Number)
 

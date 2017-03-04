@@ -2,10 +2,10 @@ package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 
-class UWGraph(private val V: Int) {
+class UWGraph(public val V: Int) {
     public var E: Int = 0
         private set
-    public val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
+    private val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
 
     public class Edge(public val v: Int, public val w: Int, public val weight: Number) {
         fun other(s: Int): Int {
