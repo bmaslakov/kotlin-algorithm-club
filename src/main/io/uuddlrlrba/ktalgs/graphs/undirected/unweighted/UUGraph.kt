@@ -1,10 +1,10 @@
 package io.uuddlrlrba.ktalgs.graphs.undirected.unweighted
 
 import io.uuddlrlrba.ktalgs.datastructures.Queue
+import io.uuddlrlrba.ktalgs.graphs.Graph
 
-class UUGraph(public val V: Int) {
-    public var E: Int = 0
-        private set
+class UUGraph(public override val V: Int): Graph {
+    public override var E: Int = 0
     private val adj: Array<Queue<Int>> = Array(V) { Queue<Int>() }
 
     public fun addEdge(v: Int, w: Int) {
@@ -13,7 +13,7 @@ class UUGraph(public val V: Int) {
         E++
     }
 
-    public fun adj(v: Int): Collection<Int> {
+    public override fun adjacentVertices(v: Int): Collection<Int> {
         return adj[v]
     }
 

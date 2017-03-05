@@ -1,10 +1,10 @@
 package io.uuddlrlrba.ktalgs.graphs.directed.weighted
 
 import io.uuddlrlrba.ktalgs.datastructures.Queue
+import io.uuddlrlrba.ktalgs.graphs.Graph
 
-class DWGraph(public val V: Int) {
-    public var E: Int = 0
-        private set
+class DWGraph(public override val V: Int): Graph {
+    public override var E: Int = 0
     private val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
     private val indegree: IntArray = IntArray(V)
 
@@ -17,8 +17,12 @@ class DWGraph(public val V: Int) {
         E++
     }
 
-    public fun adj(v: Int): Collection<Edge> {
-        return adj[v]
+    public fun adjacentEdges(from: Int): Collection<Edge> {
+        return adj[from]
+    }
+
+    public override fun adjacentVertices(from: Int): Collection<Int> {
+        return adjacentEdges(from).map { it.to }
     }
 
     public fun outdegree(v: Int): Int {
