@@ -4,45 +4,58 @@ import io.uuddlrlrba.ktalgs.datastructures.Stack
 
 class DFS {
     companion object Implementations {
-        fun iterative(graph: Graph, op: (Int) -> Unit) {
-            val visited = BooleanArray(graph.V)
+        fun iterative(graph: Graph,
+                      preorder: ((Int) -> Unit)? = null,
+                      postorder: ((Int) -> Unit)? = null) {
+            val visited = IntArray(graph.V)
             val queue = Stack<Int>()
             for (i in 0..graph.V - 1) {
-                if (!visited[i]) {
+                if (visited[i] == 0) {
                     queue.push(i)
-                    visited[i] = true
-                    op(i)
+                    visited[i] = 1
                     while (!queue.isEmpty()) {
                         val v = queue.poll()
-                        for (w in graph.adjacentVertices(v)) {
-                            if (!visited[w]) {
-                                queue.push(w)
-                                visited[w] = true
-                                op(i)
+                        if (visited[v] == 1) {
+                            visited[i] = 2
+                            preorder?.invoke(i)
+                            queue.push(v)
+                            for (w in graph.adjacentVertices(v)) {
+                                if (visited[w] == 0) {
+                                    queue.push(w)
+                                    visited[w] = 1
+                                }
                             }
+                        } else {
+                            visited[i] = 3
+                            postorder?.invoke(i)
                         }
                     }
                 }
             }
         }
 
-        fun recursive(graph: Graph, op: (Int) -> Unit) {
+        fun recursive(graph: Graph,
+                      preorder: ((Int) -> Unit)? = null,
+                      postorder: ((Int) -> Unit)? = null) {
             val visited = BooleanArray(graph.V)
             for (i in 0..graph.V - 1) {
                 if (!visited[i]) {
-                    dfs(i, graph, visited, op)
+                    dfs(i, graph, visited, preorder, postorder)
                 }
             }
         }
 
-        private fun dfs(v: Int, graph: Graph, visited: BooleanArray, op: (Int) -> Unit) {
+        private fun dfs(v: Int, graph: Graph, visited: BooleanArray,
+                        preorder: ((Int) -> Unit)? = null,
+                        postorder: ((Int) -> Unit)? = null) {
             visited[v] = true
-            op(v)
+            preorder?.invoke(v)
             for (w in graph.adjacentVertices(v)) {
                 if (!visited[w]) {
-                    dfs(w, graph, visited, op)
+                    dfs(w, graph, visited, preorder, postorder)
                 }
             }
+            postorder?.invoke(v)
         }
     }
 }
