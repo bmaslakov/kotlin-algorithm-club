@@ -27,6 +27,9 @@ class PriorityQueue(size: Int) {
         exch(arr, 1, size--)
         sink(1)
         arr[size + 1] = 0
+        if ((size > 0) && (size == (arr.size - 1) / 4)) {
+            resize()
+        }
         return res
     }
 
@@ -51,7 +54,7 @@ class PriorityQueue(size: Int) {
 
     private fun resize() {
         val old = arr
-        arr = IntArray(old.size * 2)
+        arr = IntArray(size * 2)
         System.arraycopy(old, 0, arr, 0, old.size)
     }
 
