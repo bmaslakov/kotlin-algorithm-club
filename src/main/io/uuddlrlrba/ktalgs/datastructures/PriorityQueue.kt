@@ -55,7 +55,7 @@ class PriorityQueue(size: Int) {
     private fun resize() {
         val old = arr
         arr = IntArray(size * 2)
-        System.arraycopy(old, 0, arr, 0, old.size)
+        System.arraycopy(old, 0, arr, 0, size + 1)
     }
 
     public fun isEmpty(): Boolean {
