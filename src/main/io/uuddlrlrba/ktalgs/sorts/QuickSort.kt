@@ -11,6 +11,8 @@ package io.uuddlrlrba.ktalgs.sorts
  * 3) Recursively apply the above steps to the sub-array of elements with smaller values and separately to
  * the sub-array of elements with greater values.
  */
+@ComparisonSort
+@UnstableSort
 class QuickSort: AbstractSortStrategy() {
     override fun <T : Comparable<T>> perform(arr: Array<T>) {
         sort(arr, 0, arr.size - 1)

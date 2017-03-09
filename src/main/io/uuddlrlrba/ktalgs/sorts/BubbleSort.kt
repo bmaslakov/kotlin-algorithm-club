@@ -8,6 +8,8 @@ package io.uuddlrlrba.ktalgs.sorts
  * it is too slow and impractical for most problems even when compared to insertion sort. It can be practical
  * if the input is usually in sorted order but may occasionally have some out-of-order elements nearly in position.
  */
+@ComparisonSort
+@StableSort
 class BubbleSort : AbstractSortStrategy() {
     public override fun<T : Comparable<T>> perform(arr: Array<T>) {
         var exchanged: Boolean

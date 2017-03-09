@@ -11,3 +11,12 @@ public fun exch(arr: IntArray, i: Int, j: Int) {
     arr[i] = arr[j]
     arr[j] = tmp
 }
+
+@Retention(AnnotationRetention.SOURCE)
+annotation class ComparisonSort
+
+@Retention(AnnotationRetention.SOURCE)
+annotation class StableSort
+
+@Retention(AnnotationRetention.SOURCE)
+annotation class UnstableSort

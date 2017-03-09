@@ -8,6 +8,8 @@ package io.uuddlrlrba.ktalgs.sorts
  * a simple nearest neighbor exchange. Donald Shell published the first version of this sort in 1959.
  * This implementation uses the gap sequence proposed by Pratt in 1971: 1, 4, 13, 40...
  */
+@ComparisonSort
+@StableSort
 class ShellSort : AbstractSortStrategy() {
     public override fun<T : Comparable<T>> perform(arr: Array<T>) {
         var h = 1

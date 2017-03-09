@@ -8,6 +8,8 @@ package io.uuddlrlrba.ktalgs.sorts
  * element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element
  * (putting it in sorted order), and moving the sublist boundaries one element to the right.
  */
+@ComparisonSort
+@UnstableSort
 class SelectionSort : AbstractSortStrategy() {
     public override fun<T : Comparable<T>> perform(arr: Array<T>) {
         for (i in arr.indices) {
