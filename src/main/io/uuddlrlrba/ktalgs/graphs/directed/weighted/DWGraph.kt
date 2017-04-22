@@ -8,9 +8,9 @@ class DWGraph(public override val V: Int): Graph {
     private val adj: Array<Queue<Edge>> = Array(V) { Queue<Edge>() }
     private val indegree: IntArray = IntArray(V)
 
-    public class Edge(public val from: Int, public val to: Int, public val weight: Number)
+    public class Edge(public val from: Int, public val to: Int, public val weight: Double)
 
-    public fun addEdge(from: Int, to: Int, weight: Number) {
+    public fun addEdge(from: Int, to: Int, weight: Double) {
         val edge = Edge(from, to, weight)
         adj[from].add(edge)
         indegree[to]++
