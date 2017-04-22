@@ -2,8 +2,9 @@ package io.uuddlrlrba.ktalgs.datastructures
 
 import io.uuddlrlrba.ktalgs.sorts.exch
 import java.util.*
+import kotlin.Comparator
 
-class PriorityQueue<T : Comparable<T>>(size: Int) : Collection<T> {
+class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Collection<T> {
     public override var size: Int = 0
         private set
     private var arr: Array<T?> = Array<Comparable<T>?>(size, { null }) as Array<T?>
@@ -37,8 +38,8 @@ class PriorityQueue<T : Comparable<T>>(size: Int) : Collection<T> {
         var k = a
         while (2 * k <= size) {
             var j = 2 * k
-            if (j < size && arr[j]!! > arr[j + 1]!!) j++
-            if (arr[k]!! <= arr[j]!!) break
+            if (j < size && greater(j, j + 1)) j++
+            if (!greater(k, j)) break
             exch(arr, k, j)
             k = j
         }
@@ -46,9 +47,18 @@ class PriorityQueue<T : Comparable<T>>(size: Int) : Collection<T> {
 
     private fun swim(size: Int) {
         var n = size
-        while (n > 1 && arr[n / 2]!! > arr[n]!!) {
+        while (n > 1 && greater(n / 2, n)) {
             exch(arr, n, n / 2)
             n /= 2
+        }
+    }
+
+    private fun greater(i: Int, j: Int): Boolean {
+        if (comparator != null) {
+            return comparator.compare(arr[i], arr[j]) > 0
+        } else {
+            val left = arr[i]!! as Comparable<T>
+            return left > arr[j]!!
         }
     }
 
