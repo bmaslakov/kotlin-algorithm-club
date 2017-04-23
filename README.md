@@ -18,6 +18,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Merge Sort](src/main/io/uuddlrlrba/ktalgs/sorts/MergeSort.kt)
 - [Quick Sort](src/main/io/uuddlrlrba/ktalgs/sorts/QuickSort.kt)
 - [Shell Sort](src/main/io/uuddlrlrba/ktalgs/sorts/ShellSort.kt)
+- [Heap Sort](src/main/io/uuddlrlrba/ktalgs/sorts/HeapSort.kt)
 
 ##### Data Structures
 

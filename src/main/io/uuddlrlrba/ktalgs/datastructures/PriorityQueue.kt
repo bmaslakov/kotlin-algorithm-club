@@ -34,32 +34,12 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
         return res
     }
 
-    private fun sink(a: Int) {
-        var k = a
-        while (2 * k <= size) {
-            var j = 2 * k
-            if (j < size && greater(j, j + 1)) j++
-            if (!greater(k, j)) break
-            exch(arr, k, j)
-            k = j
-        }
+    private fun swim(n: Int) {
+        Companion.swim(arr, n, comparator)
     }
 
-    private fun swim(size: Int) {
-        var n = size
-        while (n > 1 && greater(n / 2, n)) {
-            exch(arr, n, n / 2)
-            n /= 2
-        }
-    }
-
-    private fun greater(i: Int, j: Int): Boolean {
-        if (comparator != null) {
-            return comparator.compare(arr[i], arr[j]) > 0
-        } else {
-            val left = arr[i]!! as Comparable<T>
-            return left > arr[j]!!
-        }
+    private fun sink(n: Int) {
+        Companion.sink(arr, n, size, comparator)
     }
 
     private fun resize() {
@@ -88,5 +68,35 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
 
     override fun iterator(): Iterator<T> {
         return arr.copyOfRange(1, size + 1).map { it!! }.iterator()
+    }
+
+    companion object {
+        private fun<T> greater(arr: Array<T?>, i: Int, j: Int, comparator: Comparator<T>? = null): Boolean {
+            if (comparator != null) {
+                return comparator.compare(arr[i], arr[j]) > 0
+            } else {
+                val left = arr[i]!! as Comparable<T>
+                return left > arr[j]!!
+            }
+        }
+
+        public fun<T> sink(arr: Array<T?>, a: Int, size: Int, comparator: Comparator<T>? = null) {
+            var k = a
+            while (2 * k <= size) {
+                var j = 2 * k
+                if (j < size && greater(arr, j, j + 1, comparator)) j++
+                if (!greater(arr, k, j, comparator)) break
+                exch(arr, k, j)
+                k = j
+            }
+        }
+
+        public fun<T> swim(arr: Array<T?>, size: Int, comparator: Comparator<T>? = null) {
+            var n = size
+            while (n > 1 && greater(arr, n / 2, n, comparator)) {
+                exch(arr, n, n / 2)
+                n /= 2
+            }
+        }
     }
 }
