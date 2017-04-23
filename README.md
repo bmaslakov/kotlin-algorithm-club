@@ -37,3 +37,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Breadth First Search](src/main/io/uuddlrlrba/ktalgs/graphs/BFS.kt)
 - [Depth First Search](src/main/io/uuddlrlrba/ktalgs/graphs/DFS.kt)
 - [Kruskal's algorithm](src/main/io/uuddlrlrba/ktalgs/graphs/undirected/weighted/KruskalMST.kt)
+
+##### Math
+
+- [GCD / LCM](src/main/io/uuddlrlrba/ktalgs/math/Gcd.kt)
