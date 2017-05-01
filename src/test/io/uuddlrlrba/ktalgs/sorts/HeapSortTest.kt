@@ -1,3 +1,3 @@
 package io.uuddlrlrba.ktalgs.sorts
 
-class HeapSortTest: AbstractSortTest<InsertionSort>(InsertionSort())
+class HeapSortTest: AbstractSortTest<HeapSort>(HeapSort())
