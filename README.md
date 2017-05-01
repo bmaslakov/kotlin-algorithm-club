@@ -26,6 +26,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Stack](src/main/io/uuddlrlrba/ktalgs/datastructures/Stack.kt)
 - [Dequeue](src/main/io/uuddlrlrba/ktalgs/datastructures/Dequeue.kt)
 - [Priority Queue](src/main/io/uuddlrlrba/ktalgs/datastructures/PriorityQueue.kt)
+- [Indexed Priority Queue](src/main/io/uuddlrlrba/ktalgs/datastructures/IndexedPriorityQueue.kt)
 - [Disjoint Set (Union Find)](src/main/io/uuddlrlrba/ktalgs/datastructures/DisjointSet.kt)
 
 ##### Search
