@@ -36,4 +36,6 @@ or vcs
 
 * git
 
-#### `<body>` parameter is optional
+#### `<subject>` is required and briefly describes your changes
+
+#### `<body>` is optional
