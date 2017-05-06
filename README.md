@@ -44,3 +44,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 
 - [GCD / LCM](src/main/io/uuddlrlrba/ktalgs/math/Gcd.kt)
 - [Newton Method](src/main/io/uuddlrlrba/ktalgs/math/NewtonMethod.kt)
+
+##### Geometry
+
+- [Gift wrapping (Jarvis)](src/main/io/uuddlrlrba/ktalgs/geometry/convexhull/GiftWrapping.kt)
