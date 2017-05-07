@@ -4,13 +4,6 @@ import io.uuddlrlrba.ktalgs.datastructures.Stack
 import io.uuddlrlrba.ktalgs.geometry.Point
 
 object GiftWrapping {
-    // < 0 : Counterclockwise
-    // = 0 : p, q and r are colinear
-    // > 0 : Clockwise
-    fun orientation(p: Point, q: Point, r: Point): Int {
-        return (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y)
-    }
-
     fun convexHull(points: Array<Point>): Collection<Point> {
         if (points.size < 3) {
             throw IllegalArgumentException("there must be at least 3 points")
@@ -42,7 +35,7 @@ object GiftWrapping {
             q = ( p+ 1) % points.size
             points.indices
                     .asSequence()
-                    .filter { orientation(points[p], points[it], points[q]) < 0 }
+                    .filter { Point.orientation(points[p], points[it], points[q]) < 0 }
                     .forEach { q = it }
 
             // Now q is the most counterclockwise with respect to p
