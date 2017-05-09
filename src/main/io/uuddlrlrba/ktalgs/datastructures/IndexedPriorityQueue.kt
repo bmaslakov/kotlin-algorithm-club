@@ -165,8 +165,7 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
         }
     }
 
-
-    private fun contains(i: Int): Boolean {
+    public fun contains(i: Int): Boolean {
         if (i < 0 || i >= maxN) throw IndexOutOfBoundsException()
         return qp[i] != -1
     }

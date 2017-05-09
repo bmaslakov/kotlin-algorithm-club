@@ -1,6 +1,7 @@
 package io.uuddlrlrba.ktalgs.graphs.directed.weighted
 
 import io.uuddlrlrba.ktalgs.datastructures.Queue
+import io.uuddlrlrba.ktalgs.datastructures.Stack
 import io.uuddlrlrba.ktalgs.graphs.Graph
 
 class DWGraph(public override val V: Int): Graph {
@@ -15,6 +16,12 @@ class DWGraph(public override val V: Int): Graph {
         adj[from].add(edge)
         indegree[to]++
         E++
+    }
+
+    public fun edges(): Collection<Edge> {
+        val stack = Stack<Edge>()
+        adj.flatMap { it }.forEach { stack.push(it) }
+        return stack
     }
 
     public fun adjacentEdges(from: Int): Collection<Edge> {
