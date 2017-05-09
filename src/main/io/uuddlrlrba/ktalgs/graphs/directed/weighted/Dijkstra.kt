@@ -8,7 +8,7 @@ class Dijkstra(graph: DWGraph, val from: Int) {
     /**
      * distTo[v] = distance  of shortest s->v path
      */
-    private val distTo: DoubleArray = DoubleArray(graph.V, { Double.POSITIVE_INFINITY })
+    private val distTo: DoubleArray = DoubleArray(graph.V, { if (it == from) 0.0 else Double.POSITIVE_INFINITY })
 
     /**
      * edgeTo[v] = last edge on shortest s->v path
@@ -24,8 +24,6 @@ class Dijkstra(graph: DWGraph, val from: Int) {
         if (graph.edges().filter { it.weight < 0 }.isNotEmpty()) {
             throw IllegalArgumentException("there is a negative weight edge")
         }
-
-        distTo[from] = 0.0
 
         // relax vertices in order of distance from s
         pq.insert(from, distTo[from])
