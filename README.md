@@ -39,6 +39,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Breadth First Search](src/main/io/uuddlrlrba/ktalgs/graphs/BFS.kt)
 - [Depth First Search](src/main/io/uuddlrlrba/ktalgs/graphs/DFS.kt)
 - [Kruskal's algorithm](src/main/io/uuddlrlrba/ktalgs/graphs/undirected/weighted/KruskalMST.kt)
+- [Dijkstra's shortest paths](src/main/io/uuddlrlrba/ktalgs/graphs/directed/weighted/Dijkstra.kt)
 
 ##### Math
 
