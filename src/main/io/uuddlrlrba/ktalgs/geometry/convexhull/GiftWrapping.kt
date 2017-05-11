@@ -3,11 +3,9 @@ package io.uuddlrlrba.ktalgs.geometry.convexhull
 import io.uuddlrlrba.ktalgs.datastructures.Stack
 import io.uuddlrlrba.ktalgs.geometry.Point
 
-object GiftWrapping {
-    fun convexHull(points: Array<Point>): Collection<Point> {
-        if (points.size < 3) {
-            throw IllegalArgumentException("there must be at least 3 points")
-        }
+class GiftWrapping: ConvexHullAlgorithm {
+    override fun convexHull(points: Array<Point>): Collection<Point> {
+        if (points.size < 3) throw IllegalArgumentException("there must be at least 3 points")
 
         val hull = Stack<Point>()
 
