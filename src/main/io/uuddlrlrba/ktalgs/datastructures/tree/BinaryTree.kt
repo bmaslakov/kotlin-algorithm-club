@@ -6,7 +6,20 @@ class BinaryTree(var value: Int, var left: BinaryTree?, var right: BinaryTree?) 
     constructor(value: Int): this(value, null, null)
 
     fun size(): Int {
-        return size(this)
+        var size = 1
+        if (left != null) {
+            size += left!!.size()
+        }
+        if (right != null) {
+            size += right!!.size()
+        }
+        return size
+    }
+
+    fun height(): Int {
+        val left = if (left == null) 0 else left!!.height()
+        val right = if (right == null) 0 else right!!.height()
+        return maxOf(left, right) + 1
     }
 
     fun add(value: Int) {
@@ -25,12 +38,6 @@ class BinaryTree(var value: Int, var left: BinaryTree?, var right: BinaryTree?) 
                 queue.add(x.left!!)
                 queue.add(x.right!!)
             }
-        }
-    }
-
-    companion object {
-        private fun size(tree: BinaryTree?): Int {
-            return if (tree == null) 0 else size(tree.left) + size(tree.right) + 1
         }
     }
 }
