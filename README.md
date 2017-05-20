@@ -28,6 +28,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Priority Queue](src/main/io/uuddlrlrba/ktalgs/datastructures/PriorityQueue.kt)
 - [Indexed Priority Queue](src/main/io/uuddlrlrba/ktalgs/datastructures/IndexedPriorityQueue.kt)
 - [Disjoint Set (Union Find)](src/main/io/uuddlrlrba/ktalgs/datastructures/DisjointSet.kt)
+- [Binary Tree](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/BinaryTree.kt)
 
 ##### Search
 
