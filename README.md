@@ -30,6 +30,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Disjoint Set (Union Find)](src/main/io/uuddlrlrba/ktalgs/datastructures/DisjointSet.kt)
 - [Tree](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/Tree.kt)
 - [Binary Tree](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/BinaryTree.kt)
+- [Binary Search Tree](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/BinarySearchTree.kt)
 
 ##### Search
 
