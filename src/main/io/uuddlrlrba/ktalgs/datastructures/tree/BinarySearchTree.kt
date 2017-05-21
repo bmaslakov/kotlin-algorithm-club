@@ -22,8 +22,15 @@
 
 package io.uuddlrlrba.ktalgs.datastructures.tree
 
+import java.util.NoSuchElementException
+
 class BinarySearchTree<K: Comparable<K>, V> {
-    data class Node<K, V>(val key: K, var value: V, var left: Node<K, V>? = null, var right: Node<K, V>? = null, var size: Int = 1)
+    data class Node<K, V>(
+            override val key: K,
+            override var value: V,
+            var left: Node<K, V>? = null,
+            var right: Node<K, V>? = null,
+            var size: Int = 1): Map.Entry<K, V>
 
     private var root: Node<K, V>? = null
 
@@ -63,5 +70,47 @@ class BinarySearchTree<K: Comparable<K>, V> {
 
     fun isEmpty(): Boolean {
         return size() == 0
+    }
+
+    fun min(): K {
+        if (root == null) throw NoSuchElementException()
+        var x = root!!
+        while (x.left != null) {
+            x = x.left!!
+        }
+        return x.key
+    }
+
+    fun max(): K {
+        if (root == null) throw NoSuchElementException()
+        var x = root!!
+        while (x.right != null) {
+            x = x.right!!
+        }
+        return x.key
+    }
+
+    fun pollMin() {
+        if (root == null) throw NoSuchElementException()
+        root = pollMin(root!!)
+    }
+
+    private fun pollMin(x: Node<K, V>): Node<K, V>? {
+        if (x.left == null) return x.right
+        x.left = pollMin(x.left!!)
+        x.size = size(x.left) + size(x.right) + 1
+        return x
+    }
+
+    fun pollMax() {
+        if (root == null) throw NoSuchElementException()
+        root = pollMax(root!!)
+    }
+
+    private fun pollMax(x: Node<K, V>): Node<K, V>? {
+        if (x.right == null) return x.left
+        x.right = pollMax(x.right!!)
+        x.size = size(x.left) + size(x.right) + 1
+        return x
     }
 }
