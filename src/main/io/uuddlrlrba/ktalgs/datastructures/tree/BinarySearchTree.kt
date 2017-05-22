@@ -34,6 +34,20 @@ class BinarySearchTree<K: Comparable<K>, V> {
 
     private var root: Node<K, V>? = null
 
+    fun get(key: K): V {
+        var x = root
+        while (x != null) {
+            if (key < x.key) {
+                x = x.left
+            } else if (key > x.key) {
+                x = x.right
+            } else {
+                return x.value
+            }
+        }
+        throw NoSuchElementException()
+    }
+
     fun add(key: K, value: V) {
         root = add(key, value, root)
     }

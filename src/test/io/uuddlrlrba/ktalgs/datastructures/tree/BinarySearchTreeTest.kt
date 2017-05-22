@@ -35,49 +35,58 @@ class BinarySearchTreeTest {
 
     @Test
     fun sizeOfOne() {
-        val tree = BinarySearchTree<Int, Int>()
-        tree.add(1, 1)
+        val tree = BinarySearchTree<Int, String>()
+        tree.add(1, "1")
         Assert.assertFalse(tree.isEmpty())
         Assert.assertEquals(1, tree.size())
         Assert.assertEquals(1, tree.height())
         Assert.assertEquals(1, tree.min())
         Assert.assertEquals(1, tree.max())
+        Assert.assertEquals("1", tree.get(1))
         tree.pollMin()
         Assert.assertTrue(tree.isEmpty())
     }
 
     @Test
     fun sizeOfThree() {
-        val tree = BinarySearchTree<Int, Int>()
-        tree.add(1, 1)
-        tree.add(2, 2)
-        tree.add(3, 3)
+        val tree = BinarySearchTree<Int, String>()
+        tree.add(1, "1")
+        tree.add(2, "2")
+        tree.add(3, "3")
         Assert.assertFalse(tree.isEmpty())
         Assert.assertEquals(3, tree.size())
         Assert.assertEquals(3, tree.height())
         Assert.assertEquals(1, tree.min())
         Assert.assertEquals(3, tree.max())
+        Assert.assertEquals("1", tree.get(1))
+        Assert.assertEquals("2", tree.get(2))
+        Assert.assertEquals("3", tree.get(3))
         tree.pollMin()
         Assert.assertEquals(2, tree.min())
         Assert.assertEquals(3, tree.max())
+        Assert.assertEquals("2", tree.get(2))
+        Assert.assertEquals("3", tree.get(3))
         tree.pollMax()
         Assert.assertEquals(2, tree.min())
         Assert.assertEquals(2, tree.max())
+        Assert.assertEquals("2", tree.get(2))
     }
 
     @Test
     fun overwrite() {
-        val tree = BinarySearchTree<Int, Int>()
-        tree.add(1, 1)
+        val tree = BinarySearchTree<Int, String>()
+        tree.add(1, "1")
         Assert.assertFalse(tree.isEmpty())
         Assert.assertEquals(1, tree.size())
         Assert.assertEquals(1, tree.height())
-        tree.add(1, 2)
+        Assert.assertEquals("1", tree.get(1))
+        tree.add(1, "2")
         Assert.assertFalse(tree.isEmpty())
         Assert.assertEquals(1, tree.size())
         Assert.assertEquals(1, tree.height())
         Assert.assertEquals(1, tree.min())
         Assert.assertEquals(1, tree.max())
+        Assert.assertEquals("2", tree.get(1))
         tree.pollMin()
         Assert.assertTrue(tree.isEmpty())
     }
@@ -163,7 +172,10 @@ class BinarySearchTreeTest {
     fun remove() {
         val tree = BinarySearchTree<Int, String>()
         for (i in 0..30) {
-            tree.add(i, i.toString())
+            tree.add(i, (i * i).toString())
+        }
+        for (i in 0..30) {
+            Assert.assertEquals((i * i).toString(), tree.get(i))
         }
         tree.remove(15)
         tree.remove(0)
@@ -195,6 +207,19 @@ class BinarySearchTreeTest {
         Assert.assertEquals(5, tree.min())
         Assert.assertEquals(25, tree.max())
         Assert.assertEquals(12, tree.size())
+
+        Assert.assertEquals("25", tree.get(5))
+        Assert.assertEquals("36", tree.get(6))
+        Assert.assertEquals("49", tree.get(7))
+        Assert.assertEquals("64", tree.get(8))
+        Assert.assertEquals("81", tree.get(9))
+        Assert.assertEquals("100", tree.get(10))
+        Assert.assertEquals("400", tree.get(20))
+        Assert.assertEquals("441", tree.get(21))
+        Assert.assertEquals("484", tree.get(22))
+        Assert.assertEquals("529", tree.get(23))
+        Assert.assertEquals("576", tree.get(24))
+        Assert.assertEquals("625", tree.get(25))
     }
 
     @Test(expected= NoSuchElementException::class)
