@@ -51,6 +51,28 @@ class BinarySearchTree<K: Comparable<K>, V> {
         return x
     }
 
+    fun remove(key: K) {
+        root = remove(key, root)
+    }
+
+    private fun remove(key: K, root: Node<K, V>?): Node<K, V>? {
+        var x: Node<K, V> = root ?: throw NoSuchElementException()
+        if (key < x.key) {
+            x.left = remove(key, x.left)
+        } else if (key > x.key) {
+            x.right = remove(key, x.right)
+        } else {
+            if (x.left == null) return x.right
+            if (x.right == null) return x.left
+            val tmp = x
+            x = pollMin(tmp.right!!)!!
+            x.right = min(tmp.right)
+            x.left = tmp.left
+        }
+        x.size = size(x.left) + size(x.right) + 1;
+        return x
+    }
+
     fun size(): Int {
         return size(root)
     }
@@ -73,21 +95,29 @@ class BinarySearchTree<K: Comparable<K>, V> {
     }
 
     fun min(): K {
-        if (root == null) throw NoSuchElementException()
-        var x = root!!
+        return min(root).key
+    }
+
+    fun min(node: Node<K, V>?): Node<K, V> {
+        if (node == null) throw NoSuchElementException()
+        var x: Node<K, V> = node
         while (x.left != null) {
             x = x.left!!
         }
-        return x.key
+        return x
     }
 
     fun max(): K {
-        if (root == null) throw NoSuchElementException()
-        var x = root!!
+        return max(root).key
+    }
+
+    fun max(node: Node<K, V>?): Node<K, V> {
+        if (node == null) throw NoSuchElementException()
+        var x: Node<K, V> = node
         while (x.right != null) {
             x = x.right!!
         }
-        return x.key
+        return x
     }
 
     fun pollMin() {

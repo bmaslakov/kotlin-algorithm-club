@@ -159,6 +159,44 @@ class BinarySearchTreeTest {
         Assert.assertTrue(tree.isEmpty())
     }
 
+    @Test
+    fun remove() {
+        val tree = BinarySearchTree<Int, String>()
+        for (i in 0..30) {
+            tree.add(i, i.toString())
+        }
+        tree.remove(15)
+        tree.remove(0)
+        tree.remove(30)
+        Assert.assertEquals(1, tree.min())
+        Assert.assertEquals(29, tree.max())
+        tree.remove(14)
+        tree.remove(16)
+        tree.remove(1)
+        tree.remove(29)
+        Assert.assertEquals(2, tree.min())
+        Assert.assertEquals(28, tree.max())
+        tree.remove(13)
+        tree.remove(17)
+        tree.remove(2)
+        tree.remove(28)
+        Assert.assertEquals(3, tree.min())
+        Assert.assertEquals(27, tree.max())
+        tree.remove(12)
+        tree.remove(18)
+        tree.remove(3)
+        tree.remove(27)
+        Assert.assertEquals(4, tree.min())
+        Assert.assertEquals(26, tree.max())
+        tree.remove(11)
+        tree.remove(19)
+        tree.remove(4)
+        tree.remove(26)
+        Assert.assertEquals(5, tree.min())
+        Assert.assertEquals(25, tree.max())
+        Assert.assertEquals(12, tree.size())
+    }
+
     @Test(expected= NoSuchElementException::class)
     fun emptyMinFails() {
         BinarySearchTree<Int, Unit>().min()
