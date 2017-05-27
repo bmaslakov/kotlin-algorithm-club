@@ -22,9 +22,10 @@
 
 package io.uuddlrlrba.ktalgs.datastructures.tree
 
+import io.uuddlrlrba.ktalgs.datastructures.Queue
 import java.util.NoSuchElementException
 
-class BinarySearchTree<K: Comparable<K>, V> {
+class BinarySearchTree<K: Comparable<K>, V>: Map<K, V> {
     data class Node<K, V>(
             override val key: K,
             override var value: V,
@@ -34,7 +35,31 @@ class BinarySearchTree<K: Comparable<K>, V> {
 
     private var root: Node<K, V>? = null
 
-    fun get(key: K): V {
+    override val size: Int
+        get() = size(root)
+
+    override val entries: Set<Map.Entry<K, V>>
+        get() {
+            val set = mutableSetOf<Node<K, V>>()
+            inorder(root) { set.add(it) }
+            return set
+        }
+
+    override val keys: Set<K>
+        get() {
+            val set = mutableSetOf<K>()
+            inorder(root) { set.add(it.key) }
+            return set
+        }
+
+    override val values: Collection<V>
+        get() {
+            val queue = Queue<V>()
+            inorder(root) { queue.add(it.value) }
+            return queue
+        }
+
+    override fun get(key: K): V? {
         var x = root
         while (x != null) {
             if (key < x.key) {
@@ -45,7 +70,15 @@ class BinarySearchTree<K: Comparable<K>, V> {
                 return x.value
             }
         }
-        throw NoSuchElementException()
+        return null
+    }
+
+    override fun containsKey(key: K): Boolean {
+        return get(key) != null
+    }
+
+    override fun containsValue(value: V): Boolean {
+        return any { it.value == value }
     }
 
     fun add(key: K, value: V) {
@@ -87,10 +120,6 @@ class BinarySearchTree<K: Comparable<K>, V> {
         return x
     }
 
-    fun size(): Int {
-        return size(root)
-    }
-
     private fun size(x: Node<K, V>?): Int {
         if (x == null) return 0 else return x.size
     }
@@ -104,8 +133,8 @@ class BinarySearchTree<K: Comparable<K>, V> {
         return maxOf(height(x.left), height(x.right)) + 1
     }
 
-    fun isEmpty(): Boolean {
-        return size() == 0
+    override fun isEmpty(): Boolean {
+        return size == 0
     }
 
     fun min(): K {
@@ -156,5 +185,12 @@ class BinarySearchTree<K: Comparable<K>, V> {
         x.right = pollMax(x.right!!)
         x.size = size(x.left) + size(x.right) + 1
         return x
+    }
+
+    private fun inorder(x: Node<K, V>?, lambda: (Node<K, V>) -> (Unit)) {
+        if (x == null) return
+        inorder(x.left, lambda)
+        lambda(x)
+        inorder(x.right, lambda)
     }
 }
