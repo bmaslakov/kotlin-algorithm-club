@@ -41,7 +41,7 @@ class BinarySearchTree<K: Comparable<K>, V>: Map<K, V> {
     override val entries: Set<Map.Entry<K, V>>
         get() {
             val set = mutableSetOf<Node<K, V>>()
-            inorder(root) { set.add(it) }
+            inorder(root) { set.add(it.copy()) }
             return set
         }
 
