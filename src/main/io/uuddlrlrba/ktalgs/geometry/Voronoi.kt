@@ -22,37 +22,28 @@
 
 package io.uuddlrlrba.ktalgs.geometry
 
-data class Point(val x: Int, val y: Int): Comparable<Point> {
-    override fun compareTo(other: Point): Int {
-        if (x == other.x) return y.compareTo(other.y)
-        return x.compareTo(other.x)
-    }
+/**
+ * Naïve implementation, takes O(N^2) time.
+ */
+class Voronoi(private val points: Collection<Point>) {
 
-    fun isLeftOfLine(from: Point, to: Point): Boolean {
-        return crossProduct(from, to) > 0
-    }
+    val size: Int
+        get() = points.size
 
-    fun crossProduct(origin: Point, p2: Point): Int {
-        return (p2.x - origin.x) * (this.y - origin.y) - (p2.y - origin.y) * (this.x - origin.x)
-    }
-
-    fun distanceToLine(a: Point, b: Point): Double {
-        return Math.abs((b.x - a.x) * (a.y - this.y) - (a.x - this.x) * (b.y - a.y)) /
-                Math.sqrt(Math.pow((b.x - a.x).toDouble(), 2.0) + Math.pow((b.y - a.y).toDouble(), 2.0))
-    }
-
-    fun distanceToPoint(that: Point): Double {
-        val dx = this.x - that.x
-        val dy = this.y - that.y
-        return Math.sqrt((dx * dx + dy * dy).toDouble())
-    }
-
-    companion object {
-        // < 0 : Counterclockwise
-        // = 0 : p, q and r are colinear
-        // > 0 : Clockwise
-        fun orientation(p: Point, q: Point, r: Point): Int {
-            return (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y)
+    fun region(p: Point): Point {
+        var nearest: Point? = null
+        var minDist: Double? = null
+        for (point in points) {
+            val dist = point.distanceToPoint(p)
+            if (minDist == null || dist < minDist) {
+                minDist = dist
+                nearest = point
+            }
         }
+        return nearest!!
+    }
+
+    init {
+        if (points.isEmpty()) throw IllegalArgumentException("points must be non empty")
     }
 }
