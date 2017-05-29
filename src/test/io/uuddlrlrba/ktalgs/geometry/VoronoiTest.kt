@@ -28,7 +28,7 @@ import org.junit.Test
 class VoronoiTest {
     @Test(expected= IllegalArgumentException::class)
     fun testException() {
-        Voronoi(emptyList())
+        Voronoi(emptyList(), Point.EUCLIDEAN_DISTANCE_FUNC)
     }
 
     @Test
@@ -937,5 +937,32 @@ class VoronoiTest {
         Assert.assertEquals(Point(44, 42), v.region(Point(48, 44)))
         Assert.assertEquals(Point(44, 42), v.region(Point(48, 46)))
         Assert.assertEquals(Point(44, 42), v.region(Point(48, 48)))
+    }
+
+    @Test
+    fun testManhattanDistance() {
+        val v = Voronoi(
+                listOf(
+                        Point(1, 6),
+                        Point(4, 3),
+                        Point(5, 3),
+                        Point(6, 8),
+                        Point(9, 6),
+                        Point(3, 3),
+                        Point(5, 1),
+                        Point(1, 0),
+                        Point(4, 3),
+                        Point(3, 6)
+                ), Point.MANHATTAN_DISTANCE_FUNC
+        )
+        Assert.assertEquals(Point(1, 0), v.region(Point(0, 0)))
+        Assert.assertEquals(Point(1, 6), v.region(Point(0, 4)))
+        Assert.assertEquals(Point(1, 6), v.region(Point(0, 8)))
+        Assert.assertEquals(Point(5, 1), v.region(Point(4, 0)))
+        Assert.assertEquals(Point(4, 3), v.region(Point(4, 4)))
+        Assert.assertEquals(Point(6, 8), v.region(Point(4, 8)))
+        Assert.assertEquals(Point(5, 1), v.region(Point(8, 0)))
+        Assert.assertEquals(Point(9, 6), v.region(Point(8, 4)))
+        Assert.assertEquals(Point(6, 8), v.region(Point(8, 8)))
     }
 }
