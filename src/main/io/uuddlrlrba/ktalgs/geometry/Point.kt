@@ -41,10 +41,12 @@ data class Point(val x: Int, val y: Int): Comparable<Point> {
                 Math.sqrt(Math.pow((b.x - a.x).toDouble(), 2.0) + Math.pow((b.y - a.y).toDouble(), 2.0))
     }
 
-    fun distanceToPoint(that: Point): Double {
-        val dx = this.x - that.x
-        val dy = this.y - that.y
-        return Math.sqrt((dx * dx + dy * dy).toDouble())
+    fun euclideanDistanceTo(that: Point): Double {
+        return EUCLIDEAN_DISTANCE_FUNC(this, that)
+    }
+
+    fun manhattanDistanceTo(that: Point): Double {
+        return MANHATTAN_DISTANCE_FUNC(this, that)
     }
 
     companion object {
@@ -53,6 +55,18 @@ data class Point(val x: Int, val y: Int): Comparable<Point> {
         // > 0 : Clockwise
         fun orientation(p: Point, q: Point, r: Point): Int {
             return (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y)
+        }
+
+        val EUCLIDEAN_DISTANCE_FUNC: (Point, Point) -> (Double) = { p, q ->
+            val dx = p.x - q.x
+            val dy = p.y - q.y
+            Math.sqrt((dx * dx + dy * dy).toDouble())
+        }
+
+        val MANHATTAN_DISTANCE_FUNC: (Point, Point) -> (Double) = { p, q ->
+            val dx = p.x - q.x
+            val dy = p.y - q.y
+            Math.sqrt((dx * dx + dy * dy).toDouble())
         }
     }
 }
