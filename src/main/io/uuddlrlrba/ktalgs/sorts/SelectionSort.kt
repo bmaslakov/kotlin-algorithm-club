@@ -41,7 +41,7 @@ class SelectionSort : AbstractSortStrategy() {
                     min = j
                 }
             }
-            if (min != i) exch(arr, min, i)
+            if (min != i) arr.exch(min, i)
         }
     }
 }

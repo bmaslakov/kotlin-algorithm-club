@@ -59,9 +59,9 @@ class QuickSort: AbstractSortStrategy() {
                 if (j == lo) break
             }
             if (j <= i) break
-            exch(arr, j, i)
+            arr.exch(j, i)
         }
-        exch(arr, j, lo)
+        arr.exch(j, lo)
         return j
     }
 }

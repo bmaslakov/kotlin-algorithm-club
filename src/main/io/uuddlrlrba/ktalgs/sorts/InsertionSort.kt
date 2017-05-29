@@ -34,7 +34,7 @@ class InsertionSort: AbstractSortStrategy() {
         for (i in 1..arr.size - 1) {
             for (j in i downTo 1) {
                 if (arr[j - 1] < arr[j]) break
-                exch(arr, j, j - 1)
+                arr.exch(j, j - 1)
             }
         }
     }

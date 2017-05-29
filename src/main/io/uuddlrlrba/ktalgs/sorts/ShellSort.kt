@@ -43,7 +43,7 @@ class ShellSort : AbstractSortStrategy() {
             for (i in h..arr.size - 1) {
                 for (j in i downTo h step h) {
                     if (arr[j - h] < arr[j]) break
-                    exch(arr, j, j - h)
+                    arr.exch(j, j - h)
                 }
             }
             h /= 3

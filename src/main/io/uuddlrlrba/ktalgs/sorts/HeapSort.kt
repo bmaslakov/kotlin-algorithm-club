@@ -37,7 +37,7 @@ class HeapSort : AbstractSortStrategy() {
             PriorityQueue.sink(arr as Array<T?>, k - 1, arr.size - 1, reverseOrder<T>())
         }
         for (k in arr.size downTo 1) {
-            exch(arr, 0, k - 1)
+            arr.exch(0, k - 1)
             PriorityQueue.sink(arr as Array<T?>, 0, k - 2, reverseOrder<T>())
         }
     }

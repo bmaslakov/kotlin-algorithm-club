@@ -47,7 +47,7 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
     public fun poll(): T {
         if (size == 0) throw NoSuchElementException()
         val res = peek()
-        exch(arr, 1, size--)
+        arr.exch(1, size--)
         sink(1)
         arr[size + 1] = null
         if ((size > 0) && (size == (arr.size - 1) / 4)) {
@@ -108,7 +108,7 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
                 var j = 2 * k
                 if (j < size && greater(arr, j, j + 1, comparator)) j++
                 if (!greater(arr, k, j, comparator)) break
-                exch(arr, k, j)
+                arr.exch(k, j)
                 k = j
             }
         }
@@ -116,7 +116,7 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
         public fun<T> swim(arr: Array<T?>, size: Int, comparator: Comparator<T>? = null) {
             var n = size
             while (n > 1 && greater(arr, n / 2, n, comparator)) {
-                exch(arr, n, n / 2)
+                arr.exch(n, n / 2)
                 n /= 2
             }
         }

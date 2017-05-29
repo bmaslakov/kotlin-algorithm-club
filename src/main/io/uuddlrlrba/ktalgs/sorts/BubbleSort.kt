@@ -39,7 +39,7 @@ class BubbleSort : AbstractSortStrategy() {
             exchanged = false
             for (i in 1..arr.size - 1) {
                 if (arr[i] < arr[i - 1]) {
-                    exch(arr, i, i - 1)
+                    arr.exch(i, i - 1)
                     exchanged = true
                 }
             }
