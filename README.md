@@ -54,4 +54,4 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Gift wrapping (Jarvis)](src/main/io/uuddlrlrba/ktalgs/geometry/convexhull/GiftWrapping.kt)
 - [Graham Scan](src/main/io/uuddlrlrba/ktalgs/geometry/convexhull/GrahamScan.kt)
 - [Quickhull](src/main/io/uuddlrlrba/ktalgs/geometry/convexhull/Quickhull.kt)
-- [Voronoi Diagram (Naïve quadratic implementation)](src/main/io/uuddlrlrba/ktalgs/geometry/Voronoi.kt)
+- [Voronoi Diagram (Naïve implementation)](src/main/io/uuddlrlrba/ktalgs/geometry/Voronoi.kt)

@@ -23,24 +23,15 @@
 package io.uuddlrlrba.ktalgs.geometry
 
 /**
- * Naïve implementation, takes O(N^2) time.
+ * Naïve implementation, takes O(N) for each request.
  */
 class Voronoi(private val points: Collection<Point>) {
 
-    val size: Int
+    val count: Int
         get() = points.size
 
     fun region(p: Point): Point {
-        var nearest: Point? = null
-        var minDist: Double? = null
-        for (point in points) {
-            val dist = point.distanceToPoint(p)
-            if (minDist == null || dist < minDist) {
-                minDist = dist
-                nearest = point
-            }
-        }
-        return nearest!!
+        return points.minBy { p.distanceToPoint(it) }!!
     }
 
     init {

@@ -34,7 +34,7 @@ class VoronoiTest {
     @Test
     fun test1() {
         val v = Voronoi(listOf(Point(0, 0)))
-        Assert.assertEquals(1, v.size)
+        Assert.assertEquals(1, v.count)
         Assert.assertEquals(Point(0, 0), v.region(Point(-100, -100)))
         Assert.assertEquals(Point(0, 0), v.region(Point(-100, 100)))
         Assert.assertEquals(Point(0, 0), v.region(Point(100, 100)))
@@ -55,7 +55,7 @@ class VoronoiTest {
                 Point(73, 96),
                 Point(81, 90))
         )
-        Assert.assertEquals(10, v.size)
+        Assert.assertEquals(10, v.count)
         Assert.assertEquals(Point(3, 33), v.region(Point(0, 0)))
         Assert.assertEquals(Point(3, 33), v.region(Point(0, 10)))
         Assert.assertEquals(Point(3, 33), v.region(Point(0, 20)))
@@ -187,7 +187,7 @@ class VoronoiTest {
                 Point(17, 0),
                 Point(13, 0))
         )
-        Assert.assertEquals(25, v.size)
+        Assert.assertEquals(25, v.count)
         Assert.assertEquals(Point(12, 1), v.region(Point(0, 0)))
         Assert.assertEquals(Point(2, 12), v.region(Point(0, 5)))
         Assert.assertEquals(Point(2, 12), v.region(Point(0, 10)))
@@ -303,7 +303,7 @@ class VoronoiTest {
                 Point(43, 30),
                 Point(12, 48))
         )
-        Assert.assertEquals(50, v.size)
+        Assert.assertEquals(50, v.count)
         Assert.assertEquals(Point(6, 5), v.region(Point(0, 0)))
         Assert.assertEquals(Point(6, 5), v.region(Point(0, 2)))
         Assert.assertEquals(Point(6, 5), v.region(Point(0, 4)))
