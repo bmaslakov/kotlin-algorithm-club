@@ -48,6 +48,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 
 - [GCD / LCM](src/main/io/uuddlrlrba/ktalgs/math/Gcd.kt)
 - [Newton Method](src/main/io/uuddlrlrba/ktalgs/math/NewtonMethod.kt)
+- [Binomial](src/main/io/uuddlrlrba/ktalgs/math/Binomial.kt)
 
 ##### Geometry
 
