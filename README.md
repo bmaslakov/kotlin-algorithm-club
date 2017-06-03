@@ -31,6 +31,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Tree](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/Tree.kt)
 - [Binary Tree](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/BinaryTree.kt)
 - [Binary Search Tree](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/BinarySearchTree.kt)
+- [Immutable Set (based on binary search)](src/main/io/uuddlrlrba/ktalgs/datastructures/tree/ImmutableSet.kt)
 
 ##### Search
 
