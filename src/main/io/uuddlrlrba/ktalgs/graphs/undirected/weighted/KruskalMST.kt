@@ -30,7 +30,7 @@ import io.uuddlrlrba.ktalgs.datastructures.Queue
  * Kruskal's algorithm will grow a solution from the cheapest edge by adding the next cheapest edge,
  * provided that it doesn't create a cycle.
  */
-class KruskalMST(G: UWGraph) {
+class KruskalMST(G: UWGraph): MST {
     var weight: Double = 0.0
     var edges: Queue<UWGraph.Edge> = Queue()
 
@@ -57,20 +57,11 @@ class KruskalMST(G: UWGraph) {
         }
     }
 
-    /**
-     * Returns the edges in a minimum spanning tree (or forest).
-     * @return the edges in a minimum spanning tree (or forest) as
-     * *    an iterable of edges
-     */
-    fun edges(): Iterable<UWGraph.Edge> {
+    override fun edges(): Iterable<UWGraph.Edge> {
         return edges
     }
 
-    /**
-     * Returns the sum of the edge weights in a minimum spanning tree (or forest).
-     * @return the sum of the edge weights in a minimum spanning tree (or forest)
-     */
-    fun weight(): Double {
+    override fun weight(): Double {
         return weight
     }
 }

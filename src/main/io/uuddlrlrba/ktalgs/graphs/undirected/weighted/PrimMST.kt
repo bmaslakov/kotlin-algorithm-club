@@ -25,7 +25,7 @@ package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 import io.uuddlrlrba.ktalgs.datastructures.IndexedPriorityQueue
 import io.uuddlrlrba.ktalgs.datastructures.Queue
 
-class PrimMST(G: UWGraph) {
+class PrimMST(G: UWGraph): MST {
     var weight: Double = 0.0
     var edges: Queue<UWGraph.Edge> = Queue()
 
@@ -85,20 +85,11 @@ class PrimMST(G: UWGraph) {
         }
     }
 
-    /**
-     * Returns the edges in a minimum spanning tree (or forest).
-     * @return the edges in a minimum spanning tree (or forest) as
-     * *    an iterable of edges
-     */
-    fun edges(): Iterable<UWGraph.Edge> {
+    override fun edges(): Iterable<UWGraph.Edge> {
         return edges
     }
 
-    /**
-     * Returns the sum of the edge weights in a minimum spanning tree (or forest).
-     * @return the sum of the edge weights in a minimum spanning tree (or forest)
-     */
-    fun weight(): Double {
+    override fun weight(): Double {
         return weight
     }
 }
