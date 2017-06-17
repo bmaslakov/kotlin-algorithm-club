@@ -44,6 +44,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Depth First Search](src/main/io/uuddlrlrba/ktalgs/graphs/DFS.kt)
 - [Kruskal's minimum spanning tree](src/main/io/uuddlrlrba/ktalgs/graphs/undirected/weighted/KruskalMST.kt)
 - [Prim's minimum spanning tree](src/main/io/uuddlrlrba/ktalgs/graphs/undirected/weighted/PrimMST.kt)
+- [Boruvka's minimum spanning tree](src/main/io/uuddlrlrba/ktalgs/graphs/undirected/weighted/BoruvkaMST.kt)
 - [Dijkstra's shortest paths](src/main/io/uuddlrlrba/ktalgs/graphs/directed/weighted/Dijkstra.kt)
 
 ##### Math

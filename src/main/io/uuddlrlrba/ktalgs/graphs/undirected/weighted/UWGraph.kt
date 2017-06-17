@@ -59,4 +59,8 @@ class UWGraph(public override val V: Int): Graph {
     public fun degree(v: Int): Int {
         return adj[v].size
     }
+
+    public fun edges(): Collection<Edge> {
+        return adj.flatMap { it }
+    }
 }
