@@ -62,4 +62,4 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 
 ##### Substring search
 
-- [Knuth–Morris–Pratt (KMP)](src/main/io/uuddlrlrba/ktalgs/geometry/substring/KMP.kt)
+- [Knuth–Morris–Pratt (KMP)](src/main/io/uuddlrlrba/ktalgs/substring/KMP.kt)
