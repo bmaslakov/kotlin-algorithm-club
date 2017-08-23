@@ -59,6 +59,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 - [Graham Scan](src/main/io/uuddlrlrba/ktalgs/geometry/convexhull/GrahamScan.kt)
 - [Quickhull](src/main/io/uuddlrlrba/ktalgs/geometry/convexhull/Quickhull.kt)
 - [Voronoi Diagram (Naïve implementation)](src/main/io/uuddlrlrba/ktalgs/geometry/Voronoi.kt)
+- [Sierpinski triangle](src/main/io/uuddlrlrba/ktalgs/geometry/SierpinskiTriangle.kt)
 
 ##### Substring search
 
