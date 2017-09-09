@@ -15,6 +15,13 @@ buildscript {
     }
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
 sourceSets {
     main.kotlin.srcDirs += 'src/main'
     test.kotlin.srcDirs += 'src/test'
