@@ -22,25 +22,30 @@
 
 package io.uuddlrlrba.ktalgs.geometry
 
-data class Rect(val x1: Int, val y1: Int, val x2: Int, val y2: Int) {
-    val width = x2 - x1
-    val height = y2 - y1
-    val origin = Point(x1, y1)
-    val center = Point(origin.x + width / 2, origin.y + height / 2)
-    val TL = origin
-    val BR = Point(origin.x + width, origin.y + height)
+import org.junit.Assert
+import org.junit.Test
 
-    constructor(TL: Point, BR: Point) : this(TL, (BR.x - TL.x), (BR.y - TL.y))
+class QuadTreeTest {
+    @Test
+    fun naiveTest1() {
+        val qt = quadTreeOf(Rect(0, 0, 100, 100),
+                Point(5, 20) to "Foo",
+                Point(50, 32) to "Bar",
+                Point(47, 96) to "Baz",
+                Point(50, 50) to "Bing",
+                Point(12, 0) to "Bong"
+        )
 
-    constructor(origin: Point, width: Int, height: Int) : this(origin.x, origin.y, origin.x + width, origin.y + height)
+        val points1 = qt[Rect(4, 0, 51, 98)].sorted()
+        Assert.assertEquals(listOf("Bar", "Baz", "Bing", "Bong", "Foo"), points1)
 
-    fun isInside(point: Point): Boolean =
-            point.x >= origin.x && point.y >= origin.y &&
-                    point.x <= origin.x + width && point.y <= origin.y + height
+        val points2 = qt[Rect(5, 0, 50, 96)].sorted()
+        Assert.assertEquals(listOf("Bar", "Baz", "Bing", "Bong", "Foo"), points2)
 
-    fun cover(point: Point): Rect =
-            Rect(Point(minOf(x1, point.x), minOf(y1, point.y)), Point(maxOf(x2, point.x), maxOf(y2, point.y)))
+        val points3 = qt[Rect(55, 0, 50, 96)]
+        Assert.assertEquals(0, points3.count())
 
-    fun intersects(other: Rect) =
-            !(other.x1 > this.x2 || other.x2 < this.x1 || other.y1 > this.y2 || other.y2 < this.y1)
+        val points4 = qt[Rect(4, 19, 6, 21)].sorted()
+        Assert.assertEquals(listOf("Foo"), points4)
+    }
 }
