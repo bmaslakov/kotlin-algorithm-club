@@ -47,5 +47,6 @@ class GcdKtTest {
         assertEquals(377, lcm(13, 29))
         assertEquals(80, lcm(40, 16))
         assertEquals(120, lcm(40, 15))
+        assertEquals(1000000, lcm(1000000, 1000000))
     }
 }

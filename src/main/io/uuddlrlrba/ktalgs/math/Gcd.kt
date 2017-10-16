@@ -28,5 +28,5 @@ fun gcd(a: Int, b: Int): Int {
 }
 
 fun lcm(a: Int, b: Int): Int {
-    return a * b / gcd(a, b)
+    return a / gcd(a, b) * b
 }
