@@ -57,34 +57,34 @@ abstract class MSTTest(val strategy: (UWGraph) -> (MST)) {
 
     @Test
     fun test3() {
-        val graph = readFromURL(URL("http://algs4.cs.princeton.edu/43mst/tinyEWG.txt"))
+        val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/tinyEWG.txt"))
         val mst = strategy(graph)
         Assert.assertEquals(1.81, mst.weight(), 1e-12)
     }
 
     @Test
     fun test4() {
-        val graph = readFromURL(URL("http://algs4.cs.princeton.edu/43mst/mediumEWG.txt"))
+        val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/mediumEWG.txt"))
         val mst = strategy(graph)
         Assert.assertEquals(10.46351, mst.weight(), 1e-12)
     }
 
     @Test
     fun test5() {
-        val graph = readFromURL(URL("http://algs4.cs.princeton.edu/43mst/1000EWG.txt"))
+        val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/1000EWG.txt"))
         val mst = strategy(graph)
         Assert.assertEquals(20.77320, mst.weight(), 1e-12)
     }
 
     @Test
     fun test6() {
-        val graph = readFromURL(URL("http://algs4.cs.princeton.edu/43mst/10000EWG.txt"))
+        val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/10000EWG.txt"))
         val mst = strategy(graph)
         Assert.assertEquals(65.24072, mst.weight(), 1e-12)
     }
 
     fun readFromURL(url: URL): UWGraph {
-        Scanner(url.openStream()).use { scanner ->
+        Scanner(url.openStream()).useLocale(Locale.US).use { scanner ->
             val graph = UWGraph(scanner.nextInt())
             for (i in 0 until scanner.nextInt()) {
                 graph.addEdge(scanner.nextInt(), scanner.nextInt(), scanner.nextDouble())
