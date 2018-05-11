@@ -1,6 +1,6 @@
 # Welcome to the Kotlin Algorithm Club!
 
-[![Kotlin](https://img.shields.io/badge/kotlin-1.1.2-blue.svg)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.2.41-blue.svg)](http://kotlinlang.org)
 [![License](https://img.shields.io/github/license/bmaslakov/kotlin-algorithm-club.svg)](LICENSE)
 [![codebeat badge](https://codebeat.co/badges/9a90c6ce-eb29-4cd3-9e92-ed64181784dc)](https://codebeat.co/projects/github-com-bmaslakov-kotlin-algorithm-club-master)
 
