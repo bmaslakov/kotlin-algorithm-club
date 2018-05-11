@@ -62,12 +62,10 @@ class BinarySearchTree<K: Comparable<K>, V>: Map<K, V> {
     override fun get(key: K): V? {
         var x = root
         while (x != null) {
-            if (key < x.key) {
-                x = x.left
-            } else if (key > x.key) {
-                x = x.right
-            } else {
-                return x.value
+            x = when {
+                key < x.key -> x.left
+                key > x.key -> x.right
+                else -> return x.value
             }
         }
         return null
@@ -87,12 +85,10 @@ class BinarySearchTree<K: Comparable<K>, V>: Map<K, V> {
 
     private fun add(key: K, value: V, x: Node<K, V>?): Node<K, V> {
         if (x == null) return Node(key, value)
-        if (key < x.key) {
-            x.left = add(key, value, x.left)
-        } else if (key > x.key) {
-            x.right = add(key, value, x.right)
-        } else {
-            x.value = value
+        when {
+            key < x.key -> x.left = add(key, value, x.left)
+            key > x.key -> x.right = add(key, value, x.right)
+            else -> x.value = value
         }
         x.size = size(x.left) + size(x.right) + 1
         return x
@@ -104,25 +100,23 @@ class BinarySearchTree<K: Comparable<K>, V>: Map<K, V> {
 
     private fun remove(key: K, root: Node<K, V>?): Node<K, V>? {
         var x: Node<K, V> = root ?: throw NoSuchElementException()
-        if (key < x.key) {
-            x.left = remove(key, x.left)
-        } else if (key > x.key) {
-            x.right = remove(key, x.right)
-        } else {
-            if (x.left == null) return x.right
-            if (x.right == null) return x.left
-            val tmp = x
-            x = pollMin(tmp.right!!)!!
-            x.right = min(tmp.right)
-            x.left = tmp.left
+        when {
+            key < x.key -> x.left = remove(key, x.left)
+            key > x.key -> x.right = remove(key, x.right)
+            else -> {
+                if (x.left == null) return x.right
+                if (x.right == null) return x.left
+                val tmp = x
+                x = pollMin(tmp.right!!)!!
+                x.right = min(tmp.right)
+                x.left = tmp.left
+            }
         }
-        x.size = size(x.left) + size(x.right) + 1;
+        x.size = size(x.left) + size(x.right) + 1
         return x
     }
 
-    private fun size(x: Node<K, V>?): Int {
-        if (x == null) return 0 else return x.size
-    }
+    private fun size(x: Node<K, V>?): Int = x?.size ?: 0
 
     fun height(): Int {
         return height(root)

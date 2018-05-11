@@ -50,7 +50,7 @@ class BoruvkaMST(G: UWGraph): MST {
             }
 
             // add newly discovered edges to MST
-            for (i in 0..G.V - 1) {
+            for (i in 0 until G.V) {
                 val e = closest[i]
                 if (e != null) {
                     val v = e.v

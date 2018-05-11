@@ -139,20 +139,20 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
     }
 
     private fun less(x: T, y: T): Boolean {
-        if (comparator != null) {
-            return comparator.compare(x, y) < 0
+        return if (comparator != null) {
+            comparator.compare(x, y) < 0
         } else {
             val left = x as Comparable<T>
-            return left < y
+            left < y
         }
     }
 
     private fun greater(x: T, y: T): Boolean {
-        if (comparator != null) {
-            return comparator.compare(x, y) > 0
+        return if (comparator != null) {
+            comparator.compare(x, y) > 0
         } else {
             val left = x as Comparable<T>
-            return left > y
+            left > y
         }
     }
 
@@ -172,7 +172,7 @@ class IndexedPriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) 
         var k = n
         while (k > 1 && greater(k / 2, k)) {
             exch(k, k / 2)
-            k = k / 2
+            k /= 2
         }
     }
 

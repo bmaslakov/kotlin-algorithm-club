@@ -12,7 +12,7 @@ class KMP(val pat: String) {
         var x = 0
         var j = 1
         while (j < m) {
-            for (c in 0..R - 1) {
+            for (c in 0 until R) {
                 dfa[c][j] = dfa[c][x]        // Copy mismatch cases.
             }
             dfa[pat[j].toInt()][j] = j + 1   // Set match case.

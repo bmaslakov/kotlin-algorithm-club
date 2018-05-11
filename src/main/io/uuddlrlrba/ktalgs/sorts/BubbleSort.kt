@@ -37,7 +37,7 @@ class BubbleSort : AbstractSortStrategy() {
         var exchanged: Boolean
         do {
             exchanged = false
-            for (i in 1..arr.size - 1) {
+            for (i in 1 until arr.size) {
                 if (arr[i] < arr[i - 1]) {
                     arr.exch(i, i - 1)
                     exchanged = true

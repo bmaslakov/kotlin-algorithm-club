@@ -50,14 +50,11 @@ class MergeSort: AbstractSortStrategy() {
         var i = lo
         var j = mid + 1
         for (k in lo..hi) {
-            if (i > mid) {
-                arr[k] = aux[j++]
-            } else if (j > hi) {
-                arr[k] = aux[i++]
-            } else if (aux[j] < aux[i]) {
-                arr[k] = aux[j++]
-            } else {
-                arr[k] = aux[i++]
+            when {
+                i > mid -> arr[k] = aux[j++]
+                j > hi -> arr[k] = aux[i++]
+                aux[j] < aux[i] -> arr[k] = aux[j++]
+                else -> arr[k] = aux[i++]
             }
         }
     }

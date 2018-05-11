@@ -31,7 +31,7 @@ class DFS {
                       postorder: ((Int) -> Unit)? = null) {
             val visited = IntArray(graph.V)
             val queue = Stack<Int>()
-            for (i in 0..graph.V - 1) {
+            for (i in 0 until graph.V) {
                 if (visited[i] == 0) {
                     queue.push(i)
                     visited[i] = 1

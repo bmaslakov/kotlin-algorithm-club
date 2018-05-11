@@ -28,12 +28,10 @@ class BinarySearch<T: Comparable<T>>: AbstractSearchStrategy<T>() {
         var hi = arr.size - 1
         while (lo <= hi) {
             val mid = (lo + hi) / 2
-            if (element < arr[mid]) {
-                hi = mid - 1
-            } else if (element > arr[mid]) {
-                lo = mid + 1
-            } else {
-                return mid
+            when {
+                element < arr[mid] -> hi = mid - 1
+                element > arr[mid] -> lo = mid + 1
+                else -> return mid
             }
         }
         return -1

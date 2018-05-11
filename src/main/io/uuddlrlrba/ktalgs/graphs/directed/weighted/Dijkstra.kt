@@ -43,7 +43,7 @@ class Dijkstra(graph: DWGraph, val from: Int) {
     private val pq: IndexedPriorityQueue<Double> = IndexedPriorityQueue(graph.V)
 
     init {
-        if (graph.edges().filter { it.weight < 0 }.isNotEmpty()) {
+        if (graph.edges().any { it.weight < 0 }) {
             throw IllegalArgumentException("there is a negative weight edge")
         }
 

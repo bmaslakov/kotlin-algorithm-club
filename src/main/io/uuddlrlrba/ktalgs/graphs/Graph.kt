@@ -27,7 +27,5 @@ interface Graph {
     public var E: Int
     public fun adjacentVertices(from: Int): Collection<Int>
 
-    public fun vertices(): IntRange {
-        return 0..V-1
-    }
+    public fun vertices(): IntRange = 0 until V
 }

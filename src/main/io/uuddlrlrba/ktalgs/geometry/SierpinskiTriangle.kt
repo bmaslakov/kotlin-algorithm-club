@@ -43,7 +43,7 @@ class SierpinskiTriangle {
         }
     }
 
-    fun drawTriangles(arr: Array<BooleanArray>, top: Int, left: Int, bottom: Int, right: Int): Unit {
+    fun drawTriangles(arr: Array<BooleanArray>, top: Int, left: Int, bottom: Int, right: Int) {
         val height = bottom - top
         val width = right - left
         for (i in 0..height) {
