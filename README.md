@@ -1,4 +1,4 @@
-# Welcome to the Kotlin Algorithm Club!
+![alt text](kotlin-algorithm-club.png "Logo Title Text 1")
 
 [![Kotlin](https://img.shields.io/badge/kotlin-1.2.41-blue.svg)](http://kotlinlang.org)
 [![License](https://img.shields.io/github/license/bmaslakov/kotlin-algorithm-club.svg)](LICENSE)
