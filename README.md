@@ -68,3 +68,7 @@ This project is inspired by and based on wonderful works of [Robert Sedgewick](h
 ##### Substring search
 
 - [Knuth–Morris–Pratt (KMP)](src/main/io/uuddlrlrba/ktalgs/substring/KMP.kt)
+
+## License
+
+Kotlin algorithm club is released under the [MIT License](https://opensource.org/licenses/MIT).
