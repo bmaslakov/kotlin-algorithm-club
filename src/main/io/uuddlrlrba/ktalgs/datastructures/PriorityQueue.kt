@@ -94,12 +94,16 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
 
     companion object {
         private fun<T> greater(arr: Array<T?>, i: Int, j: Int, comparator: Comparator<T>? = null): Boolean {
-            if (comparator != null) {
-                return comparator.compare(arr[i], arr[j]) > 0
-            } else {
-                val left = arr[i]!! as Comparable<T>
-                return left > arr[j]!!
+            // Remove nullability from values because comparator is not defined for nullables
+            val left = arr[i] ?: return false
+            val right = arr[j] ?: return true
+
+            comparator?.let {
+                return it.compare(left, right) > 0
             }
+
+            val leftC = left as Comparable<T>
+            return leftC > right
         }
 
         public fun<T> sink(arr: Array<T?>, a: Int, size: Int, comparator: Comparator<T>? = null) {
