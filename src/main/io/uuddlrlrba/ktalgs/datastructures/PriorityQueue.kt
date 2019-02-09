@@ -67,7 +67,7 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
     private fun resize() {
         val old = arr
         arr = Array<Comparable<T>?>(size * 2, { null }) as Array<T?>
-        System.arraycopy(old, 0, arr, 0, size + 1)
+        old.copyInto(arr, 0, 0, size)
     }
 
     public override fun isEmpty(): Boolean {
