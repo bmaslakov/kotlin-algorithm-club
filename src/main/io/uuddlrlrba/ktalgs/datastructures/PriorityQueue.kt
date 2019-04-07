@@ -67,7 +67,7 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
     private fun resize() {
         val old = arr
         arr = Array<Comparable<T>?>(size * 2, { null }) as Array<T?>
-        old.copyInto(arr, 0, 0, size)
+        System.arraycopy(old, 0, arr, 0, size + 1)
     }
 
     public override fun isEmpty(): Boolean {
@@ -94,16 +94,12 @@ class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Colle
 
     companion object {
         private fun<T> greater(arr: Array<T?>, i: Int, j: Int, comparator: Comparator<T>? = null): Boolean {
-            // Remove nullability from values because comparator is not defined for nullables
-            val left = arr[i] ?: return false
-            val right = arr[j] ?: return true
-
-            comparator?.let {
-                return it.compare(left, right) > 0
+            if (comparator != null) {
+                return comparator.compare(arr[i], arr[j]) > 0
+            } else {
+                val left = arr[i]!! as Comparable<T>
+                return left > arr[j]!!
             }
-
-            val leftC = left as Comparable<T>
-            return leftC > right
         }
 
         public fun<T> sink(arr: Array<T?>, a: Int, size: Int, comparator: Comparator<T>? = null) {
