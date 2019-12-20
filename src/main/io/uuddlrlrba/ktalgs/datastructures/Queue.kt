@@ -57,6 +57,7 @@ public class Queue<T> : Collection<T> {
         if (size == 0) throw NoSuchElementException()
         val old = head!!
         head = old.next
+        size--
         return old.value
     }
 

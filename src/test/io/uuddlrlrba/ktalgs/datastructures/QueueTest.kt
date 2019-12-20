@@ -50,6 +50,7 @@ class QueueTest {
             Assert.assertEquals(i, queue.peek())
             Assert.assertEquals(i, queue.poll())
         }
+        Assert.assertEquals(0, queue.size)
     }
 
     @Test
