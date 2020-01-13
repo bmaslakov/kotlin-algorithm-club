@@ -46,10 +46,11 @@ class StackTest {
         for (i in 0..10) {
             stack.push(i)
         }
-        for (i in 10..0) {
+        for (i in 10 downTo 0) {
             Assert.assertEquals(i, stack.peek())
             Assert.assertEquals(i, stack.poll())
         }
+        Assert.assertEquals(0, stack.size)
     }
 
     @Test
