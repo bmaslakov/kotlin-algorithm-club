@@ -35,5 +35,6 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.12'
+    testCompile 'com.carrotsearch:junit-benchmarks:0.7.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
