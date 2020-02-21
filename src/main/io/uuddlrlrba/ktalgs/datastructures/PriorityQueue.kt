@@ -26,10 +26,14 @@ import io.uuddlrlrba.ktalgs.sorts.exch
 import java.util.*
 import kotlin.Comparator
 
-class PriorityQueue<T>(size: Int, val comparator: Comparator<T>? = null) : Collection<T> {
+class PriorityQueue<T>(capacity: Int, val comparator: Comparator<T>? = null) : Collection<T> {
     public override var size: Int = 0
         private set
-    private var arr: Array<T?> = Array<Comparable<T>?>(size, { null }) as Array<T?>
+    private var arr: Array<T?> = Array<Comparable<T>?>(capacity, { null }) as Array<T?>
+
+    init {
+        if (capacity <= 0) throw Error("Invalid capacity: $capacity")
+    }
 
     public fun add(element: T) {
         if (size + 1 == arr.size) {
