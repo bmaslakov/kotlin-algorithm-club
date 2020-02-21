@@ -32,8 +32,8 @@ class PriorityQueue<T>(capacity: Int, val comparator: Comparator<T>? = null) : C
     private var arr: Array<T?> = Array<Comparable<T>?>(capacity, { null }) as Array<T?>
 
     init {
-		if (capacity <= 0) throw Error("Invalid capacity: $capacity")
-	}
+        if (capacity <= 0) throw Error("Invalid capacity: $capacity")
+    }
 
     public fun add(element: T) {
         if (size + 1 == arr.size) {
