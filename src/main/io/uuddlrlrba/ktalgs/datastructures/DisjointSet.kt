@@ -23,16 +23,12 @@
 package io.uuddlrlrba.ktalgs.datastructures
 
 class DisjointSet(val size: Int) {
-    private val parent = IntArray(size)
+    private val parent = IntArray(size) {
+        it
+    }
     private val rank = ByteArray(size)
     public var count = size
         private set
-
-    init {
-        for (i in parent.indices) {
-            parent[i] = i
-        }
-    }
 
     public fun connected(v: Int, w: Int): Boolean {
         return find(v) == find(w)
