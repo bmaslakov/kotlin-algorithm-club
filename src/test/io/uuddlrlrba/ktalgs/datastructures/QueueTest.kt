@@ -22,22 +22,26 @@
 
 package io.uuddlrlrba.ktalgs.datastructures
 
-import org.junit.Assert
-import org.junit.Test
-import java.util.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class QueueTest {
     @Test
     fun emptyTest() {
         val queue = Queue<Int>()
-        Assert.assertEquals(0, queue.size)
-        Assert.assertTrue(queue.isEmpty())
+        assertEquals(0, queue.size)
+        assertTrue(queue.isEmpty())
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test
     fun exceptionTest() {
-        val queue = Queue<Int>()
-        queue.peek()
+        assertFailsWith<NoSuchElementException> {
+            val queue = Queue<Int>()
+            queue.peek()
+        }
     }
 
     @Test
@@ -47,10 +51,10 @@ class QueueTest {
             queue.add(i)
         }
         for (i in 0..10) {
-            Assert.assertEquals(i, queue.peek())
-            Assert.assertEquals(i, queue.poll())
+            assertEquals(i, queue.peek())
+            assertEquals(i, queue.poll())
         }
-        Assert.assertEquals(0, queue.size)
+        assertEquals(0, queue.size)
     }
 
     @Test
@@ -62,7 +66,7 @@ class QueueTest {
 
         var k = 0
         for (i in queue) {
-            Assert.assertEquals(i, k++)
+            assertEquals(i, k++)
         }
     }
 
@@ -74,11 +78,11 @@ class QueueTest {
         }
 
         for (i in 0..10) {
-            Assert.assertTrue(queue.contains(i))
+            assertTrue(queue.contains(i))
         }
 
-        Assert.assertFalse(queue.contains(100))
-        Assert.assertFalse(queue.contains(101))
-        Assert.assertFalse(queue.contains(103))
+        assertFalse(queue.contains(100))
+        assertFalse(queue.contains(101))
+        assertFalse(queue.contains(103))
     }
 }

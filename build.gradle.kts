@@ -37,8 +37,12 @@ kotlin {
 
 
 dependencies {
-    testCompileOnly ("junit:junit:4.12")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
+    implementation(kotlin(("stdlib")))
+    testImplementation(kotlin("test-junit5"))
+    testCompileOnly(kotlin("test"))
+    testCompileOnly(kotlin("test-annotations-common"))
+    testCompileOnly("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 }
 
 tasks.jacocoTestReport {
@@ -50,5 +54,6 @@ tasks.jacocoTestReport {
 }
 
 tasks.test {
+    useJUnitPlatform()
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }

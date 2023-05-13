@@ -22,22 +22,26 @@
 
 package io.uuddlrlrba.ktalgs.datastructures
 
-import org.junit.Assert
-import org.junit.Test
-import java.util.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class StackTest {
     @Test
     fun emptyTest() {
         val stack = Stack<Int>()
-        Assert.assertEquals(0, stack.size)
-        Assert.assertTrue(stack.isEmpty())
+        assertEquals(0, stack.size)
+        assertTrue(stack.isEmpty())
     }
 
-    @Test(expected=NoSuchElementException::class)
+    @Test
     fun exceptionTest() {
-        val stack = Stack<Int>()
-        stack.peek()
+        assertFailsWith<NoSuchElementException> {
+            val stack = Stack<Int>()
+            stack.peek()
+        }
     }
 
     @Test
@@ -47,10 +51,10 @@ class StackTest {
             stack.push(i)
         }
         for (i in 10 downTo 0) {
-            Assert.assertEquals(i, stack.peek())
-            Assert.assertEquals(i, stack.poll())
+            assertEquals(i, stack.peek())
+            assertEquals(i, stack.poll())
         }
-        Assert.assertEquals(0, stack.size)
+        assertEquals(0, stack.size)
     }
 
     @Test
@@ -62,7 +66,7 @@ class StackTest {
 
         var k = 10
         for (i in stack) {
-            Assert.assertEquals(i, k--)
+            assertEquals(i, k--)
         }
     }
 
@@ -74,11 +78,11 @@ class StackTest {
         }
 
         for (i in 0..10) {
-            Assert.assertTrue(stack.contains(i))
+            assertTrue(stack.contains(i))
         }
 
-        Assert.assertFalse(stack.contains(100))
-        Assert.assertFalse(stack.contains(101))
-        Assert.assertFalse(stack.contains(103))
+        assertFalse(stack.contains(100))
+        assertFalse(stack.contains(101))
+        assertFalse(stack.contains(103))
     }
 }

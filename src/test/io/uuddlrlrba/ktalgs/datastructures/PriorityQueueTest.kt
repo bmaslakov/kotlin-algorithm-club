@@ -22,22 +22,25 @@
 
 package io.uuddlrlrba.ktalgs.datastructures
 
-import org.junit.Assert
-import org.junit.Test
-import java.util.NoSuchElementException
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 class PriorityQueueTest {
     @Test
     fun emptyTest() {
         val pq = PriorityQueue<Int>(3)
-        Assert.assertEquals(0, pq.size)
-        Assert.assertTrue(pq.isEmpty())
+        assertEquals(0, pq.size)
+        assertTrue(pq.isEmpty())
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test
     fun exceptionTest() {
-        val pq = PriorityQueue<Int>(3)
-        pq.peek()
+        assertFailsWith<NoSuchElementException> {
+            val pq = PriorityQueue<Int>(3)
+            pq.peek()
+        }
     }
 
     @Test
@@ -45,10 +48,10 @@ class PriorityQueueTest {
         val pq = PriorityQueue<Int>(3)
         for (i in 10 downTo 1) {
             pq.add(i)
-            Assert.assertEquals(i, pq.peek())
+            assertEquals(i, pq.peek())
         }
         for (i in 1..10) {
-            Assert.assertEquals(i, pq.poll())
+            assertEquals(i, pq.poll())
         }
     }
 }

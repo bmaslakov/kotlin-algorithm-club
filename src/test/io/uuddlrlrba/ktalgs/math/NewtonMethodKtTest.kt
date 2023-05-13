@@ -22,9 +22,10 @@
 
 package io.uuddlrlrba.ktalgs.math
 
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.math.absoluteValue
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class NewtonMethodKtTest {
     @Test
@@ -34,8 +35,8 @@ class NewtonMethodKtTest {
         assertEquals(2.toDouble(), sqrt(4.toDouble()), 1e-15)
         assertEquals(4.toDouble(), sqrt(16.toDouble()), 1e-12)
         for (i in 7 until 99) {
-            for (j in -15 until -1) {
-                assertEquals(sqrt(i.toDouble()), sqrt(i.toDouble()), j.toDouble())
+            for (j in 2 until 16) {
+                assertEquals(sqrt(i.toDouble()), sqrt(i.toDouble()), j.toDouble().absoluteValue)
             }
         }
     }
@@ -46,7 +47,7 @@ class NewtonMethodKtTest {
         assertEquals(2.toDouble(), sqrt(4), 1e-15)
         assertEquals(4.toDouble(), sqrt(16), 1e-12)
         for (i in 7 until 99) {
-            for (j in -15 until -1) {
+            for (j in 2 until 16) {
                 assertEquals(sqrt(i), sqrt(i), j.toDouble())
             }
         }
