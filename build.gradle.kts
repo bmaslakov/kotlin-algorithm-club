@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.3.21"
+    kotlin("jvm") version "1.8.20"
     jacoco
     idea
     java
@@ -17,7 +17,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.21")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20")
     }
 }
 
@@ -37,8 +37,8 @@ kotlin {
 
 
 dependencies {
-    testImplementation("junit:junit:4.12")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.21")
+    testCompileOnly ("junit:junit:4.12")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
 }
 
 tasks.jacocoTestReport {

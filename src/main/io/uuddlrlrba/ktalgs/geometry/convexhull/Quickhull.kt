@@ -27,8 +27,8 @@ import io.uuddlrlrba.ktalgs.geometry.Point
 class Quickhull: ConvexHullAlgorithm {
     override fun convexHull(points: Array<Point>): Collection<Point> {
         if (points.size < 3) throw IllegalArgumentException("there must be at least 3 points")
-        val left = points.min()!!
-        val right = points.max()!!
+        val left = points.minOrNull()!!
+        val right = points.maxOrNull()!!
         return quickHull(points.asList(), left, right) + quickHull(points.asList(), right, left)
     }
 
@@ -39,7 +39,7 @@ class Quickhull: ConvexHullAlgorithm {
         if (pointsLeftOfLine.isEmpty()) {
             return listOf(second)
         } else {
-            val max = pointsLeftOfLine.maxBy { it.second }!!.first
+            val max = pointsLeftOfLine.maxByOrNull { it.second }!!.first
             val newPoints = pointsLeftOfLine.map { it.first }
             return quickHull(newPoints, first, max) + quickHull(newPoints, max, second)
         }
