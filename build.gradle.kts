@@ -22,6 +22,7 @@ buildscript {
 }
 
 kotlin {
+    jvmToolchain(11)
     sourceSets {
         main {
             kotlin.setSrcDirs(listOf("src/main"))
@@ -43,8 +44,8 @@ dependencies {
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
     reports {
-        xml.isEnabled = true
-        html.isEnabled = false
+        xml.required.set(true)
+        html.required.set(false)
     }
 }
 
