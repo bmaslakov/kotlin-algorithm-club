@@ -22,9 +22,8 @@
 
 package io.uuddlrlrba.ktalgs.math
 
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class GcdKtTest {
     @Test

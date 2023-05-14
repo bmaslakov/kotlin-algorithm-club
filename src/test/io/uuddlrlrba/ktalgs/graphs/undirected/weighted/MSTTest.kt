@@ -22,10 +22,10 @@
 
 package io.uuddlrlrba.ktalgs.graphs.undirected.weighted
 
-import org.junit.Assert
-import org.junit.Test
 import java.net.URL
 import java.util.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 abstract class MSTTest(val strategy: (UWGraph) -> (MST)) {
     @Test
@@ -38,7 +38,7 @@ abstract class MSTTest(val strategy: (UWGraph) -> (MST)) {
         graph.addEdge(0, 1, 4.0)
         graph.addEdge(1, 3, 3.0)
         val mst = strategy(graph)
-        Assert.assertEquals(7.0, mst.weight(), 1e-12)
+        assertEquals(7.0, mst.weight(), 1e-12)
     }
 
     @Test
@@ -52,35 +52,35 @@ abstract class MSTTest(val strategy: (UWGraph) -> (MST)) {
         graph.addEdge(1, 4, 3.0)
         graph.addEdge(1, 3, 5.0)
         val mst = strategy(graph)
-        Assert.assertEquals(11.0, mst.weight(), 1e-12)
+        assertEquals(11.0, mst.weight(), 1e-12)
     }
 
     @Test
     fun test3() {
         val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/tinyEWG.txt"))
         val mst = strategy(graph)
-        Assert.assertEquals(1.81, mst.weight(), 1e-12)
+        assertEquals(1.81, mst.weight(), 1e-12)
     }
 
     @Test
     fun test4() {
         val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/mediumEWG.txt"))
         val mst = strategy(graph)
-        Assert.assertEquals(10.46351, mst.weight(), 1e-12)
+        assertEquals(10.46351, mst.weight(), 1e-12)
     }
 
     @Test
     fun test5() {
         val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/1000EWG.txt"))
         val mst = strategy(graph)
-        Assert.assertEquals(20.77320, mst.weight(), 1e-12)
+        assertEquals(20.77320, mst.weight(), 1e-12)
     }
 
     @Test
     fun test6() {
         val graph = readFromURL(URL("https://algs4.cs.princeton.edu/43mst/10000EWG.txt"))
         val mst = strategy(graph)
-        Assert.assertEquals(65.24072, mst.weight(), 1e-12)
+        assertEquals(65.24072, mst.weight(), 1e-12)
     }
 
     fun readFromURL(url: URL): UWGraph {

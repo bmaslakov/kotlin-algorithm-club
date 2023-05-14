@@ -1,6 +1,6 @@
 ![alt text](kotlin-algorithm-club.png "Logo Title Text 1")
 
-[![Kotlin](https://img.shields.io/badge/kotlin-1.2.41-blue.svg)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.8.20-blue.svg)](http://kotlinlang.org)
 [![License](https://img.shields.io/github/license/bmaslakov/kotlin-algorithm-club.svg)](LICENSE)
 [![codebeat badge](https://codebeat.co/badges/9a90c6ce-eb29-4cd3-9e92-ed64181784dc)](https://codebeat.co/projects/github-com-bmaslakov-kotlin-algorithm-club-master)
 

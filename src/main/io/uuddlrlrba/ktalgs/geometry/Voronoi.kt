@@ -31,7 +31,7 @@ class Voronoi(private val points: Collection<Point>, private val distanceFunc: (
         get() = points.size
 
     fun region(p: Point): Point {
-        return points.minBy { distanceFunc(p, it) }!!
+        return points.minByOrNull { distanceFunc(p, it) }!!
     }
 
     init {

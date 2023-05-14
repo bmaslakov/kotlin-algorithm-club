@@ -30,7 +30,7 @@ class Tree(var value: Int) {
     }
 
     fun height(): Int {
-        return 1 + (children.map { it.size() }.max() ?: 0)
+        return 1 + (children.map { it.size() }.maxOrNull() ?: 0)
     }
 
     fun add(value: Int) {

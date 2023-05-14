@@ -22,22 +22,26 @@
 
 package io.uuddlrlrba.ktalgs.datastructures
 
-import org.junit.Assert
-import org.junit.Test
-import java.util.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class DequeueTest {
     @Test
     fun emptyTest() {
         val dequeue = Dequeue<Int>()
-        Assert.assertEquals(0, dequeue.size)
-        Assert.assertTrue(dequeue.isEmpty())
+        assertEquals(0, dequeue.size)
+        assertTrue(dequeue.isEmpty())
     }
 
-    @Test(expected= NoSuchElementException::class)
+    @Test
     fun exceptionTest() {
-        val dequeue = Dequeue<Int>()
-        dequeue.peekFirst()
+        assertFailsWith<NoSuchElementException> {
+            val dequeue = Dequeue<Int>()
+            dequeue.peekFirst()
+        }
     }
 
     @Test
@@ -47,12 +51,12 @@ class DequeueTest {
             dequeue.add(i)
         }
         for (i in 0..5) {
-            Assert.assertEquals(i, dequeue.peekFirst())
-            Assert.assertEquals(i, dequeue.pollFirst())
+            assertEquals(i, dequeue.peekFirst())
+            assertEquals(i, dequeue.pollFirst())
         }
         for (i in 10..6) {
-            Assert.assertEquals(i, dequeue.peekLast())
-            Assert.assertEquals(i, dequeue.pollLast())
+            assertEquals(i, dequeue.peekLast())
+            assertEquals(i, dequeue.pollLast())
         }
     }
 
@@ -65,7 +69,7 @@ class DequeueTest {
 
         var k = 0
         for (i in dequeue) {
-            Assert.assertEquals(i, k++)
+            assertEquals(i, k++)
         }
     }
 
@@ -77,11 +81,11 @@ class DequeueTest {
         }
 
         for (i in 0..10) {
-            Assert.assertTrue(dequeue.contains(i))
+            assertTrue(dequeue.contains(i))
         }
 
-        Assert.assertFalse(dequeue.contains(100))
-        Assert.assertFalse(dequeue.contains(101))
-        Assert.assertFalse(dequeue.contains(103))
+        assertFalse(dequeue.contains(100))
+        assertFalse(dequeue.contains(101))
+        assertFalse(dequeue.contains(103))
     }
 }
